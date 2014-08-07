@@ -11,7 +11,7 @@ app.factory('storage', function() {
   };
 
   self.get = function() {
-    return window.localStorage[key] ? new Number(window.localStorage[key]) : 0;
+    return window.localStorage[key] ? Number(window.localStorage[key]) : 0;
   };
 
   self.clear = function() {
