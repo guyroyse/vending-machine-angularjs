@@ -1,7 +1,7 @@
 describe("Vending Machine", function() {
 
   beforeEach(function() {
-    module('vendingMachineApp')
+    module('vendingMachineApp');
   });
 
   describe("Storage", function() {
@@ -32,7 +32,7 @@ describe("Vending Machine", function() {
 
       });
 
-    })
+    });
 
   });
 
