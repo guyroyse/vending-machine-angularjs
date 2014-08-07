@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="vendingMachineApp">
+<head>
+  <meta charset="utf-8">
+  <title>Vending Machine</title>
+  <script src="js/vendor/angular.js"></script>
+  <script src="js/vending-machine.js"></script>
+</head>
+<body ng-controller="VendingMachineController">
+
+  <h1>AwesomeCo Vending</h1>
+
+  <p>Display: <span id="display">{{display}}</span></p>
+
+  <p>Insert Coin of Type:
+    <input type="button" id="insertNickel" value="Nickel" ng-click="nickelInserted()"/>
+    <input type="button" id="insertDime" value="Dime" ng-click="dimeInserted()"/>
+    <input type="button" id="insertQuarter" value="Quarter" ng-click="quarterInserted()"/>
+  </p>
+
+  <p><input type="button" id="reset" value="Reset" ng-click="reset()"/></p>
+
+</body>
+</html>
