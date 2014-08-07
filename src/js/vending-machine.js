@@ -1,30 +1,44 @@
 var app = angular.module('vendingMachineApp', []);
 
-app.factory('machine', function() {
+app.factory('storage', function() {
+
+  var key = 'total';
+
+  var self = {};
+
+  self.set = function(value) {
+    window.localStorage[key] = value;
+  };
+
+  self.get = function() {
+    return window.localStorage[key] ? new Number(window.localStorage[key]) : 0;
+  };
+
+  self.clear = function() {
+    delete window.localStorage[key];
+  }
+
+  return self;
+
+});
+
+app.factory('machine', function(storage) {
 
   var coins = { NICKEL : 5, DIME : 10, QUARTER : 25 };
-
-  var total = function() {
-    return window.localStorage.total ? new Number(window.localStorage.total) : 0;
-  };
-
-  var addToTotal = function(value) {
-    window.localStorage.total = total() + value;
-  };
 
   var machine = {};
 
   machine.display = function() {
-    return total() === 0 ? "INSERT COIN" : (total() / 100).toFixed(2);
+    return storage.get() === 0 ? "INSERT COIN" : (storage.get() / 100).toFixed(2);
   };
 
   machine.insertCoin = function(coin) {
     var value = coins[coin];
-    if (value) addToTotal(value);
+    if (value) storage.set(storage.get() + value);
   };
 
   machine.reset = function() {
-    delete localStorage.total;
+    storage.clear();
   };
 
   return machine;
