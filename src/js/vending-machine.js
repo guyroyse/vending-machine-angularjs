@@ -33,8 +33,7 @@ app.factory('machine', function(storage) {
   };
 
   machine.insertCoin = function(coin) {
-    var value = coins[coin];
-    if (value) storage.set(storage.get() + value);
+    storage.set(storage.get() + coins[coin]);
   };
 
   machine.reset = function() {

@@ -93,18 +93,6 @@ describe("Vending Machine", function() {
 
       });
 
-      and("it is invalid", function() {
-
-        beforeEach(function() {
-          this.machine.insertCoin('QUARTER');
-        });
-
-        it("adds nothing to the balance", function() {
-          expect(this.storage.set).not.toHaveBeenCalledWith();
-        });
-
-      });
-
     });
 
   });
